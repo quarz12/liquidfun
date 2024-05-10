@@ -1,5 +1,7 @@
 #!/bin/bash
-java -jar $CLOSURE_JAR --language_in ECMASCRIPT5 \
+#closure docs: https://github.com/google/closure-compiler/wiki/Flags-and-Options
+CLOSURE_JAR=./closure-compiler-v20240317.jar
+java -jar $CLOSURE_JAR --language_in ECMASCRIPT_2015 \
 --compilation_level WHITESPACE_ONLY \
 ./lf_core.js \
 ./jsBindings/offsets.js \

@@ -5,6 +5,7 @@
 
 PYTHON=$(ENV) python
 
+#Rootfolder /liquidfun/Box2D/Box2D
 O = ../Box2D
 OBJECTS = \
 $(O)/Rope/b2Rope.cpp \
@@ -249,7 +250,7 @@ EXPORTS = EXPORTED_FUNCTIONS="[ \
 	$(B2WORLD) \
 	]"
 
-bindings.js:
+bindings.js:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
 	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s TOTAL_MEMORY=33554432 -O2 --js-library callbacks.js
 
 all: bindings.js
