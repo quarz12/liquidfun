@@ -247,14 +247,14 @@ EXPORTS = EXPORTED_FUNCTIONS="[ \
 	$(B2ROPEJOINT), \
 	$(B2WELDJOINT), \
 	$(B2WHEELJOINT), \
-	$(B2WORLD) \
+	$(B2WORLD), \
+    '_malloc', \
+    '_free' \
 	]"
 
 RUNTIME_EXPORTS=EXPORTED_RUNTIME_METHODS="[ \
 	'ccall',\
-	'cwrap', \
-	'malloc', \
-	'_malloc'\
+	'cwrap' \
 	]"
 
 compilejs:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
