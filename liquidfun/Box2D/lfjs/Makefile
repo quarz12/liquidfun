@@ -251,6 +251,6 @@ EXPORTS = EXPORTED_FUNCTIONS="[ \
 	]"
 
 bindings.js:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
-	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s TOTAL_MEMORY=33554432 -O2 --js-library callbacks.js
+	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s EXTRA_EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap', 'malloc', '_malloc']" -s TOTAL_MEMORY=33554432 -O2 --js-library callbacks.js
 
 all: bindings.js
