@@ -250,7 +250,14 @@ EXPORTS = EXPORTED_FUNCTIONS="[ \
 	$(B2WORLD) \
 	]"
 
+RUNTIME_EXPORTS=EXPORTED_RUNTIME_METHODS="[ \
+	'ccall',\
+	'cwrap', \
+	'malloc', \
+	'_malloc'\
+	]"
+
 bindings.js:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
-	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s EXTRA_EXPORTED_RUNTIME_METHODS="['ccall', 'cwrap', 'malloc', '_malloc']" -s TOTAL_MEMORY=33554432 -O2 --js-library callbacks.js
+	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s $(RUNTIME_EXPORTS) -s TOTAL_MEMORY=33554432 -O0 --js-library callbacks.js
 
 all: bindings.js
