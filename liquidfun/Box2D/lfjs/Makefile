@@ -257,7 +257,11 @@ RUNTIME_EXPORTS=EXPORTED_RUNTIME_METHODS="[ \
 	'_malloc'\
 	]"
 
-bindings.js:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
+compilejs:	#also includes jsBindings/jsBindings.cpp, callback.js, output is lf_core.js
 	emcc -I../ -o lf_core.js jsBindings/jsBindings.cpp $(OBJECTS) -s $(EXPORTS) -s $(RUNTIME_EXPORTS) -s TOTAL_MEMORY=33554432 -O0 --js-library callbacks.js
 
-all: bindings.js
+minify:
+	./uglify.sh
+
+all: compilejs
+
